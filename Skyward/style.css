@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: none;
+}
+
+html, body, canvas {
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  cursor: none;
+}
+
+
+body {
+  background-color: rgb(75, 79, 81);
+  display: grid;
+  grid-template-rows: min-content auto min-content 0;
+  color: white;
+  font-family: 'Arial';
+  font-size: 1em;
+  font-weight: bolder;
+}
+
+div {
+  padding: 0 0.5em;
+}
+
+div#head {
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  display: grid;
+  text-align: right;
+}
+
+h1 {
+  display: inline;
+}
+#Lives{
+  display: inline;
+  color: aqua;
+  top:4px;
+  right: 333px;
+}
+
+
+
+#ScoreText {
+  transform: translate(-5%, 0);
+}  
+
+div#Menu, div#Over {
+  display: inline-block;
+  position: absolute;
+  text-shadow: 2px 0px 2px black, -2px 0px 2px black, 0px 2px 2px black, 0px -2px 2px black;
+  top: 10%;
+  left: 1%;
+}
+
+div#Over {
+  visibility: hidden;
+  font-size: 3em;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  top: 25%;
+  left: 50%;
+}
+
+#credits {
+  float: right;
+  text-align: right;
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Skyward</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="../Fudge/FudgeCore.js"></script>
+  <script src="SpriteGenerator.js"></script>
+  <script src="Gomez.js"></script>
+
+  <script src="Coin.js"></script>
+  <script src="Floor.js"></script>
+  <script src="Planes.js"></script>
+  <script src="Skybox.js"></script>
+  <script src="Hitbox.js  "></script>
+  <script src="Controls.js"></script>
+  <script src="Camera.js"></script>
+  <script src="Sound.js"></script>
+  <script src="Main.js"></script>
+</head>
+<body>
+  <div id="head">
+    <h1 style="text-align: left;">Skyward</h1>
+    <h1 id="ScoreText" style="text-align: right;">Coins:</h1><h1 id="CollectedCoins" style="text-align: left;">0</h1>
+    <h1 id="ScoreText" style="text-align: right;">Lives</h1><h1 id="Lives" style="text-align: left;"></h1>
+    <h1 id="Sound" style="text-align: right;">Music: ON</h1>
+  </div>
+
+  <canvas style="background-color: black"></canvas>
+
+  <div>
+    <span>LEFT: A | RIGHT: D | JUMP: W | Rotate Perspective Right/Left <- ->  | TOGGLE SOUND: M</span>
+    <span id="credits">PRIMA ABGABE Markus Schürmann (256667)</span>
+  </div>
+
+  <div>
+    <div id="PointsAnimation"></div>
+    <div id="Calculation"></div>
+
+    <div id="Menu">
+      <h1>
+        1. press F11 for fullscreen <br />
+        2. press ENTER to start
+      </h1>
+    </div>
+    <div id="Over">
+      <h1>
+        GAME OVER
+      </h1><br />
+      press F5 to restart
+    </div>
+  </div>
+
+
+  <img style="display: none" src="Assets/fez4.png"/>
+  
+  <audio id="jump" src="Assets/Sounds/jump.mp3" type="audio/mpeg"></audio>
+  <audio id="coin" src="Assets/Sounds/coin.mp3 " type="audio/mpeg"></audio>
+  <audio id="rotation" src="Assets/Sounds/rotation.wav " type="audio/mpeg"></audio>
+  <audio id="Reflection" src="Assets/Sounds/Reflection.mp3 " type="audio/mpeg"></audio>
+</body>
+</html>
