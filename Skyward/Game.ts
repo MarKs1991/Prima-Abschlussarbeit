@@ -30,10 +30,6 @@ namespace Skyward {
           
             Sound.init();
             let txtHare: f.TextureImage = new f.TextureImage();
-
-
-            
-
             txtHare.image = img;
         
             Floor.generateSprites(txtHare);
@@ -42,23 +38,17 @@ namespace Skyward {
             Planes.generateSprites(txtHare);
             Gomez.generateSprites(txtHare);
           
-            gomez = new Gomez("Gomez");
-            enemys = new f.Node("Enemys");
-        
             
-            // planes.cmpTransform.local.translation = new f.Vector3(0 -1, 0);
 
+           
 
-             gomez.mtxWorld.translation = new f.Vector3(0,2,0);
-
-            collectorAble = this.createCollectables();
+            this.createParentNodes();
             this.appendChild(collectorAble);
 
             level = this.createLevel();
             this.appendChild(level);
             this.appendChild(gomez);
             this.appendChild(enemys);
-            // game.appendChild(planes);
 
 
             this.CamZoom.addComponent(compCam);
@@ -69,71 +59,22 @@ namespace Skyward {
 
             return this;
         }
+        
+        private createParentNodes() {
 
+          level = new f.Node("Level");
+          level.addComponent(new f.ComponentTransform());
+          
+          collectorAble = new f.Node("collectorAble");
 
-        public normalizeTransforms(rotDirection : number) {
-            gomez.cmpTransform.local.rotateY(rotDirection);
-            let NodeArray: f.Node[] = [floor, coin];
-            let ParentArray = [FloorArray, CoinArray];
+          enemys = new f.Node("Enemys");
 
-            for (let j = 0; j <= NodeArray.length - 1; j++) {
+          gomez = new Gomez("Gomez");
+          gomez.mtxWorld.translation = new f.Vector3(0,2,0); 
+      }
 
-                let i = 0;
-
-
-                for (NodeArray[j] of ParentArray[j])
-                // for (let m = 0; m <= Vector3Array.length - 1; m++)
-                {
-
-                    NodeArray[j].cmpTransform.local.rotateY(rotDirection);
-
-
-                    let rotation = NodeArray[j].cmpTransform.local.rotation.y;
-
-                    if (rotation == 90 || rotation == -90) {
-
-
-                        NodeArray[j].cmpTransform.local.translateX(-Vector3Array[i].x);
-
-                        // lastPos = gomez.cmpTransform.local.translation.x;
-
-                        gomez.cmpTransform.local.translateX(- gomez.cmpTransform.local.translation.x);
-
-                        // gomez.cmpTransform.local.translation.x = 0;
-
-                        NodeArray[j].cmpTransform.local.translateZ(Vector3Array[i].z);
-
-                        if (i == 0 && j == 0) 
-                            gomez.cmpTransform.local.translateZ(Vector3Array[gomez.lastHitIndex].z);
-                        
-
-                    }
-
-                    if (rotation > -40 && rotation < 40 || rotation == 180 || rotation == -180) { // gomez.cmpTransform.local.translation.x = gomez.lastHit.x;
-                        NodeArray[j].cmpTransform.local.translateZ(-Vector3Array[i].z);
-
-                        gomez.cmpTransform.local.translateZ(- gomez.cmpTransform.local.translation.z);
-                        if (rotation == 180) { // gomez.cmpTransform.local.rotateY(90);
-                        }
-                        // gomez.cmpTransform.local.translation.z = 0;
-                        // gomez.cmpTransform.local.translateX(lastPos );
-                        NodeArray[j].cmpTransform.local.translateX(Vector3Array[i].x);
-
-                        if (i == 0 && j == 0) {
-                            gomez.cmpTransform.local.translateX(Vector3Array[gomez.lastHitIndex].x);
-                        }
-                    }
-
-                    // f.Debug.log("rot" + floor.cmpTransform.local.rotation.y);
-                    i++;
-
-                    // gomez.mtxWorld.translateX(-gomez.mtxWorld.translation.x);
-                }
-            }
-        }
         private createLevel(): f.Node {
-            let level: f.Node = new f.Node("Level");
-            level.addComponent(new f.ComponentTransform());
+            
             floor = new Floor();
 
             floor.cmpTransform.local.scaleY(0.5);
@@ -240,14 +181,7 @@ namespace Skyward {
             return level;
 
         }
-        private createCollectables(): f.Node {
-
-            let collectorAble: f.Node = new f.Node("collectorAble");
-
-
-            return collectorAble;
-        }
-
+      
         private createCoin(Position: f.Vector3) {
 
 
@@ -275,7 +209,69 @@ namespace Skyward {
             enemys.appendChild(planes);
 
         }
-    }
+    
 
+    public normalizeTransforms(rotDirection : number) {
+      gomez.cmpTransform.local.rotateY(rotDirection);
+      let NodeArray: f.Node[] = [floor, coin];
+      let ParentArray = [FloorArray, CoinArray];
+
+      for (let j = 0; j <= NodeArray.length - 1; j++) {
+
+          let i = 0;
+
+
+          for (NodeArray[j] of ParentArray[j])
+          // for (let m = 0; m <= Vector3Array.length - 1; m++)
+          {
+
+              NodeArray[j].cmpTransform.local.rotateY(rotDirection);
+
+
+              let rotation = NodeArray[j].cmpTransform.local.rotation.y;
+
+              if (rotation == 90 || rotation == -90) {
+
+
+                  NodeArray[j].cmpTransform.local.translateX(-Vector3Array[i].x);
+
+                  // lastPos = gomez.cmpTransform.local.translation.x;
+
+                  gomez.cmpTransform.local.translateX(- gomez.cmpTransform.local.translation.x);
+
+                  // gomez.cmpTransform.local.translation.x = 0;
+
+                  NodeArray[j].cmpTransform.local.translateZ(Vector3Array[i].z);
+
+                  if (i == 0 && j == 0) 
+                      gomez.cmpTransform.local.translateZ(Vector3Array[gomez.lastHitIndex].z);
+                  
+
+              }
+
+              if (rotation > -40 && rotation < 40 || rotation == 180 || rotation == -180) { // gomez.cmpTransform.local.translation.x = gomez.lastHit.x;
+                  NodeArray[j].cmpTransform.local.translateZ(-Vector3Array[i].z);
+
+                  gomez.cmpTransform.local.translateZ(- gomez.cmpTransform.local.translation.z);
+                  if (rotation == 180) { // gomez.cmpTransform.local.rotateY(90);
+                  }
+                  // gomez.cmpTransform.local.translation.z = 0;
+                  // gomez.cmpTransform.local.translateX(lastPos );
+                  NodeArray[j].cmpTransform.local.translateX(Vector3Array[i].x);
+
+                  if (i == 0 && j == 0) {
+                      gomez.cmpTransform.local.translateX(Vector3Array[gomez.lastHitIndex].x);
+                  }
+              }
+
+              // f.Debug.log("rot" + floor.cmpTransform.local.rotation.y);
+              i++;
+
+              // gomez.mtxWorld.translateX(-gomez.mtxWorld.translation.x);
+          }
+      }
   }
+
+}
+}
 
