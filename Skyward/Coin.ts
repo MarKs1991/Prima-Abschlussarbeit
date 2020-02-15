@@ -48,7 +48,7 @@ namespace Skyward {
         }
 
 
-        public getRectWorld(rotation: number): f.Rectangle {
+        public getCurrentHitbox(rotation: number): f.Rectangle {
 
           let size : f.Vector2;
           let rect: f.Rectangle = f.Rectangle.GET(0, 0, 100, 100);

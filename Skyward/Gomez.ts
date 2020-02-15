@@ -15,7 +15,7 @@ namespace Skyward {
     export class Gomez extends f.Node {
         private static sprites : Sprite[];
         private static speedMax : f.Vector2 = new f.Vector2(1.5, 5); // units per second
-        private static gravity : f.Vector2 = f.Vector2.Y(-4);
+        private static gravity : f.Vector2 = f.Vector2.Y(-3.5);
         // private action: ACTION;
         // private time: f.Time = new f.Time();
         public isOnFloor : boolean = true;
@@ -136,10 +136,10 @@ namespace Skyward {
 
         }
 
-        private jumping() {
+        public jumping() {
             if (this.speed.y == 0) {
                 this.jumps = 1;
-                this.cmpTransform.local.translateY(.1);
+                this.mtxWorld.translateY(6);
                 this.speed.y = 3;
                 Sound.play("jump");
             }
@@ -155,7 +155,7 @@ namespace Skyward {
 
         private loseLive() {
 
-            if (this.cmpTransform.local.translation.y<-10) {
+            if (this.cmpTransform.local.translation.y < -10) {
                 this.lives --;
                 document.getElementById("Lives").innerHTML = this.lives.toString();
                 this.cmpTransform.local.translation = new f.Vector3(0, 1, 0);
@@ -186,17 +186,17 @@ namespace Skyward {
             for (let floor of level.getChildren()) {
 
 
-                let rotation: number = (< Floor > floor).getFloorRotation();
+                let rotation: number = (< Floor > floor).cmpTransform.local.rotation.y;
                 let rect: f.Rectangle = new f.Rectangle();
                 let CharacterCollider: f.Vector2;
 
 
-                // use ZY Collider on 90/-90 Rotation
+                // use ZY Collider on 90/-90 Rotatdion
                 if (rotation == 90 || rotation == -90) {
-                    rect = (< Floor > floor).getRectWorld(rotation);
+                    rect = (< Floor > floor).getCurrentHitbox(rotation);
                     CharacterCollider = new f.Vector2(this.mtxWorld.translation.z, this.mtxWorld.translation.y);
                 } else { // use XY Collider on 0/180 Rotation
-                    rect = (< Floor > floor).getRectWorld(rotation);
+                    rect = (< Floor > floor).getCurrentHitbox(rotation);
                     CharacterCollider = this.cmpTransform.local.translation.toVector2();
                 }
 
@@ -224,17 +224,17 @@ namespace Skyward {
             for (let coin of collectorAble.getChildren()) {
 
 
-                let rotation: number = (< Coin > coin).getCoinRotation();
+                let rotation: number = (< Coin > coin).cmpTransform.local.rotation.y;
                 let rect: f.Rectangle = new f.Rectangle();
                 let CharacterCollider: f.Vector2;
 
 
                 // use ZY Collider on 90/-90 Rotation
                 if (rotation == 90 || rotation == -90) {
-                    rect = (< Coin > coin).getRectWorld(rotation);
+                    rect = (< Coin > coin).getCurrentHitbox(rotation);
                     CharacterCollider = new f.Vector2(this.mtxWorld.translation.z, this.mtxWorld.translation.y);
                 } else { // use XY Collider on 0/180 Rotation
-                    rect = (< Coin > coin).getRectWorld(rotation);
+                    rect = (< Coin > coin).getCurrentHitbox(rotation);
                     CharacterCollider = this.cmpTransform.local.translation.toVector2();
                 }
 
@@ -258,17 +258,17 @@ namespace Skyward {
           for (let planes of enemys.getChildren()) {
 
 
-              let rotation: number = (< Planes > planes).getPlanesRotation();
+              let rotation: number = (< Planes > planes).cmpTransform.local.rotation.y;
               let rect: f.Rectangle = new f.Rectangle();
               let CharacterCollider: f.Vector2;
 
 
               // use ZY Collider on 90/-90 Rotation
               if (rotation == 90 || rotation == -90) {
-                  rect = (< Planes > planes).getRectWorld(rotation);
+                  rect = (< Planes > planes).getCurrentHitbox(rotation);
                   CharacterCollider = new f.Vector2(this.mtxWorld.translation.z, this.mtxWorld.translation.y);
               } else { // use XY Collider on 0/180 Rotation
-                  rect = (< Planes > planes).getRectWorld(rotation);
+                  rect = (< Planes > planes).getCurrentHitbox(rotation);
                   CharacterCollider = this.cmpTransform.local.translation.toVector2();
               }
 

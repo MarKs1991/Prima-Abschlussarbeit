@@ -33,7 +33,7 @@ var Skyward;
             for (let child of this.getChildren())
                 child.activate(child.name == "CoinSprite");
         }
-        getRectWorld(rotation) {
+        getCurrentHitbox(rotation) {
             let size;
             let rect = f.Rectangle.GET(0, 0, 100, 100);
             let topleft = new f.Vector3(-0.5, 0.5, 0);

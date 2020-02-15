@@ -95,7 +95,7 @@ var Skyward;
         jumping() {
             if (this.speed.y == 0) {
                 this.jumps = 1;
-                this.cmpTransform.local.translateY(.1);
+                this.mtxWorld.translateY(6);
                 this.speed.y = 3;
                 Skyward.Sound.play("jump");
             }
@@ -134,16 +134,16 @@ var Skyward;
         checkCollision() {
             let i = 0;
             for (let floor of Skyward.level.getChildren()) {
-                let rotation = floor.getFloorRotation();
+                let rotation = floor.cmpTransform.local.rotation.y;
                 let rect = new f.Rectangle();
                 let CharacterCollider;
-                // use ZY Collider on 90/-90 Rotation
+                // use ZY Collider on 90/-90 Rotatdion
                 if (rotation == 90 || rotation == -90) {
-                    rect = floor.getRectWorld(rotation);
+                    rect = floor.getCurrentHitbox(rotation);
                     CharacterCollider = new f.Vector2(this.mtxWorld.translation.z, this.mtxWorld.translation.y);
                 }
                 else { // use XY Collider on 0/180 Rotation
-                    rect = floor.getRectWorld(rotation);
+                    rect = floor.getCurrentHitbox(rotation);
                     CharacterCollider = this.cmpTransform.local.translation.toVector2();
                 }
                 // console.log(rect.toString());
@@ -163,16 +163,16 @@ var Skyward;
         }
         collectCoins() {
             for (let coin of Skyward.collectorAble.getChildren()) {
-                let rotation = coin.getCoinRotation();
+                let rotation = coin.cmpTransform.local.rotation.y;
                 let rect = new f.Rectangle();
                 let CharacterCollider;
                 // use ZY Collider on 90/-90 Rotation
                 if (rotation == 90 || rotation == -90) {
-                    rect = coin.getRectWorld(rotation);
+                    rect = coin.getCurrentHitbox(rotation);
                     CharacterCollider = new f.Vector2(this.mtxWorld.translation.z, this.mtxWorld.translation.y);
                 }
                 else { // use XY Collider on 0/180 Rotation
-                    rect = coin.getRectWorld(rotation);
+                    rect = coin.getCurrentHitbox(rotation);
                     CharacterCollider = this.cmpTransform.local.translation.toVector2();
                 }
                 // console.log(rect.toString());
@@ -187,16 +187,16 @@ var Skyward;
         }
         hitPlayer() {
             for (let planes of Skyward.enemys.getChildren()) {
-                let rotation = planes.getPlanesRotation();
+                let rotation = planes.cmpTransform.local.rotation.y;
                 let rect = new f.Rectangle();
                 let CharacterCollider;
                 // use ZY Collider on 90/-90 Rotation
                 if (rotation == 90 || rotation == -90) {
-                    rect = planes.getRectWorld(rotation);
+                    rect = planes.getCurrentHitbox(rotation);
                     CharacterCollider = new f.Vector2(this.mtxWorld.translation.z, this.mtxWorld.translation.y);
                 }
                 else { // use XY Collider on 0/180 Rotation
-                    rect = planes.getRectWorld(rotation);
+                    rect = planes.getCurrentHitbox(rotation);
                     CharacterCollider = this.cmpTransform.local.translation.toVector2();
                 }
                 // console.log(rect.toString());
@@ -208,7 +208,7 @@ var Skyward;
         }
     }
     Gomez.speedMax = new f.Vector2(1.5, 5); // units per second
-    Gomez.gravity = f.Vector2.Y(-4);
+    Gomez.gravity = f.Vector2.Y(-3.5);
     Skyward.Gomez = Gomez;
 })(Skyward || (Skyward = {}));
 //# sourceMappingURL=Gomez.js.map

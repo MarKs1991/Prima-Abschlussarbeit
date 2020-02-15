@@ -8,6 +8,21 @@ var Skyward;
     Skyward.soundMuteCounter = 0;
     function handleKeyboard(_event) {
         keysPressed[_event.code] = (_event.type == "keydown");
+        if (_event.code == Skyward.f.KEYBOARD_CODE.SPACE && _event.type == "keydown") {
+            Skyward.gomez.act(Skyward.ACTION.JUMP);
+        }
+        let camtransformation = Skyward.Camera.camtransformations[_event.code];
+        if (camtransformation) {
+            Skyward.camera.cammove(camtransformation);
+            if (keysPressed[Skyward.f.KEYBOARD_CODE.ARROW_RIGHT]) {
+                Skyward.Sound.play("rotation");
+                Skyward.game.normalizeTransforms(90);
+            }
+            if (keysPressed[Skyward.f.KEYBOARD_CODE.ARROW_LEFT]) {
+                Skyward.Sound.play("rotation");
+                Skyward.game.normalizeTransforms(-90);
+            }
+        }
     }
     async function start() {
         await waitForKeyPress(Skyward.f.KEYBOARD_CODE.ENTER);

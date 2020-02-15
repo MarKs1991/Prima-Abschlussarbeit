@@ -11,22 +11,14 @@ namespace Skyward {
   }
   export class Camera extends f.Node {
       public static camtransformations: CamTransformations = Camera.defineControls();
-
- 
    
       constructor() {
           super("Camera");
           this.addComponent(new f.ComponentTransform());
-         
-
-          
-   
       }
 
       public static defineControls(): CamTransformations {
           let controls: CamTransformations = {};
-
-          
          
           controls[f.KEYBOARD_CODE.ARROW_LEFT] = { rotation: f.Vector3.Y(-.5)};
           controls[f.KEYBOARD_CODE.ARROW_RIGHT] = { rotation: f.Vector3.Y(.5) };
@@ -43,7 +35,24 @@ namespace Skyward {
           
       }
 
+      public cammove(_transformation: Transformation): void {
 
-      
-    }
+        let animationSteps: number = 20;
+        let fullRotation: number = 90;
+       
+        let move: Transformation = {
+            rotation: _transformation.rotation ? f.Vector3.SCALE(_transformation.rotation, fullRotation) : new f.Vector3()
+            //translation: _transformation.translation ? f.Vector3.SCALE(_transformation.translation, fullTranslation) : new f.Vector3()
+        };
+        move.rotation.scale(1 / animationSteps);
+  
+        f.Time.game.setTimer(10, animationSteps, function (): void {
+            camera.move(move);
+  
+  
+            //f.RenderManager.update();
+            //viewport.draw();
+        });
+    }    
+  }
 }

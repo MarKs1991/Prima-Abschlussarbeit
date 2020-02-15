@@ -10,7 +10,7 @@ namespace Skyward {
 }
 
 export interface Transformations {
-    [keycode: string]: Transformation;
+  [keycode: string]: Transformation;
 }
 
   let keysPressed: KeyPressed = {};
@@ -22,6 +22,29 @@ export interface Transformations {
 
   function handleKeyboard(_event: KeyboardEvent): void {
     keysPressed[_event.code] = (_event.type == "keydown");
+
+    if (_event.code == f.KEYBOARD_CODE.SPACE && _event.type == "keydown")
+    {
+      gomez.act(ACTION.JUMP);
+    }
+    let camtransformation: CamTransformation = Camera.camtransformations[_event.code];
+
+    if (camtransformation) {
+        camera.cammove(camtransformation);
+  
+  
+  
+        if (keysPressed[f.KEYBOARD_CODE.ARROW_RIGHT]) {
+          Sound.play("rotation");
+          game.normalizeTransforms(90);    
+        }
+        if (keysPressed[f.KEYBOARD_CODE.ARROW_LEFT]) {
+          Sound.play("rotation");
+          game.normalizeTransforms(-90);
+           
+        }
+        
+      }
   }
 
   export async function start(): Promise<void> {
@@ -99,6 +122,8 @@ export interface Transformations {
     {
       Sound.volumeDown();
     }
+
+   
 
 
    

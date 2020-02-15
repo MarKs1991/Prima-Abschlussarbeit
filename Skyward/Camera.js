@@ -20,6 +20,20 @@ var Skyward;
             mtxContainer.rotate(_transformation.rotation, true);
             //mtxFragment.translate(_transformation.translation);
         }
+        cammove(_transformation) {
+            let animationSteps = 20;
+            let fullRotation = 90;
+            let move = {
+                rotation: _transformation.rotation ? f.Vector3.SCALE(_transformation.rotation, fullRotation) : new f.Vector3()
+                //translation: _transformation.translation ? f.Vector3.SCALE(_transformation.translation, fullTranslation) : new f.Vector3()
+            };
+            move.rotation.scale(1 / animationSteps);
+            f.Time.game.setTimer(10, animationSteps, function () {
+                Skyward.camera.move(move);
+                //f.RenderManager.update();
+                //viewport.draw();
+            });
+        }
     }
     Camera.camtransformations = Camera.defineControls();
     Skyward.Camera = Camera;
