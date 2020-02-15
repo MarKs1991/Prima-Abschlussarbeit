@@ -20,20 +20,21 @@ Repository for the module "Prototyping interactive media-applications and games"
 |  3 | Objektanzahl variabel | Die Platformen werden zur Laufzeit zufällig generiert. Dabei bleibt allerdings sicher gestellt das die nächstliegenste Platform immer durch mindestens eine Perspektive erreichbar bleibt. 
                              |
 |  4 | Szenenhierarchie      | Die Szenenhirachie ist unterteilt unter einer Game Parent. Ab hier spalten sich Camera, Charakter, Level, Collectables ab. Weitere Details einfügen. 
-|
+                             |
 |  5 | Sound                 | Es sind Sounds für ein Sprungfeedback und für den Perspektivenwechsel eingebunden. Zudem sorgt der Soundtrack vom inspiererten IndieSpiel FEZ für die musikikalische Hintergrundbemalung. 
-|
+                             |
 |  6 | GUI                   | Ein GUI an der oberern Bildschirmkante teilt dem Spieler mit wieviel Leben er noch hat, wieviel Münzen er bereits gesammelt hat und ob die Spielmusik an oder aus ist. An der unteren Bildschirmkante kann der Spieler die Steuerung einsehen.  
-|
+                             |
 |  7 | Externe Daten         | In einer JSON Datei sind 3 Parameter hinterlegt: Die Anzahl der zu genenierenden Platformen im Level, der Garantierte Hochstabstand auf zumindest einer Achse von 2 Platformen und die Anzahl der Startleben. 
-|
+                             |
 |  8 | Verhaltensklassen     | Das Verhalten von Objekten ist in den Methoden von Klassen definiert, die in externen Dateien abgelegt sind. Welche Klassen sind dies und welches Verhalten wird dort beschrieben? 
-|
+                             |
 |  9 | Subklassen            | Es existiert eine Klassenhierarchie, einige Objekte sind Instanzen von einer oder mehreren abgeleiteten Subklassen mit gegenüber den anderen Objekten speziellem Verhalten und besonderen Eigenschaften. Welche Klassen sind dies und welches Verhalten wird dort beschrieben? 
-|
-| 10 | Maße & Positionen     | Die Kamera ist weit vom Spielcharakter entfernt um dem Nutzer die nötige weitsicht zu geben. Bei jedem Perspektivenwechsel ändern sich auch die Collider und die Achse die momentan in Richtung der Kamera zeigt wird bei allen objekten inder Szene mit Ausnahme der Kamera auf Null gesetzt. Dies hat den Sinn dass der Spieler die Position der Platformen und Münzen korrekt erkennen kann da sich sonst durch eine optische Täuschung die Sprites an einer Anderen Position erscheinen würden als der Collider es vorgibt. |
+                             |
+| 10 | Maße & Positionen     | Die Kamera ist weit vom Spielcharakter entfernt um dem Nutzer die nötige weitsicht zu geben. Bei jedem Perspektivenwechsel ändern sich auch die Collider und die Achse die momentan in Richtung der Kamera zeigt wird bei allen objekten inder Szene mit Ausnahme der Kamera auf Null gesetzt. Dies hat den Sinn dass der Spieler die Position der Platformen und Münzen korrekt erkennen kann da sich sonst durch eine optische Täuschung die Sprites an einer Anderen Position erscheinen würden als der Collider es vorgibt. 
+                             |
 | 11 | Event-System          | Das Event-System wird verwendet. Wer sendet wem Informationen oder Methodenaufrufe und wofür? 
-|
+                             |
 
 ## Abgabeformat
 * Fasse die Konzeption als ein wohlformatiertes Designdokument in PDF zusammen!
