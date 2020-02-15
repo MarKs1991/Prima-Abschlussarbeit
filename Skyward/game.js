@@ -132,7 +132,7 @@ var Skyward;
                 Skyward.floor.cmpTransform.local.translateZ(-Skyward.Vector3Array[i].z);
                 this.createCoin((Skyward.FloorArray[i].cmpTransform.local.translation));
                 if (i > platformNumber / 4) {
-                    // this.createPlane(FloorArray[i].cmpTransform.local.translation);
+                    this.createPlane(Skyward.FloorArray[i].cmpTransform.local.translation);
                 }
             }
             let skybox = new Skyward.Skybox();
@@ -171,7 +171,6 @@ var Skyward;
         }
         createPlane(Position) {
             let planes = new Skyward.Planes();
-            let hitbox = new Skyward.Hitbox();
             planes.cmpTransform.local.scaleY(1);
             planes.cmpTransform.local.scaleX(1);
             planes.cmpTransform.local.translate(Position);

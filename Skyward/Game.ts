@@ -208,7 +208,7 @@ namespace Skyward {
 
                 this.createCoin((FloorArray[i].cmpTransform.local.translation));
                 if (i > platformNumber / 4) {
-               // this.createPlane(FloorArray[i].cmpTransform.local.translation);
+                this.createPlane(FloorArray[i].cmpTransform.local.translation);
                 }
 
             }
@@ -266,7 +266,7 @@ namespace Skyward {
 
 
             let planes = new Planes();
-            let hitbox = new Hitbox();
+           
             planes.cmpTransform.local.scaleY(1);
             planes.cmpTransform.local.scaleX(1);
             planes.cmpTransform.local.translate(Position);

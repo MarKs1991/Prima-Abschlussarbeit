@@ -2,20 +2,11 @@ namespace Skyward {
     import f = FudgeCore;
 
     export class Hitbox extends f.Node {
-        public mesh : f.MeshSprite = new f.MeshSprite();
+       
         // private static material: f.Material = new f.Material("Hitbox", f.ShaderUniColor, new f.CoatColored(f.Color.CSS("blue", 0.5)));
         public readonly pivot : f.Matrix4x4 = f.Matrix4x4.TRANSLATION(f.Vector3.Y(-0.5));
-
-
-        public constructor(_name? : string) {
-            super(_name);
-
-           /* this.addComponent(new f.ComponentTransform());
-            let cmpMesh: f.ComponentMesh = new f.ComponentMesh(this.mesh);
-            cmpMesh.pivot = this.pivot;
-            this.addComponent(cmpMesh);
-*/
-        }
+        public mesh: f.MeshSprite = new f.MeshSprite();
+  
 
         public getCurrentHitbox(rotation : number): f.Rectangle {
 
@@ -48,5 +39,11 @@ namespace Skyward {
             } rect.size = size;
             return rect;
         }
+
+        public getRotation(): number {
+          let rotation: number = this.cmpTransform.local.rotation.y;
+          return rotation;
+      }
     }
+    
 }

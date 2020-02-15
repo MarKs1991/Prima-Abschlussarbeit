@@ -1,11 +1,8 @@
 namespace Skyward {
   import f = FudgeCore;
 
-  export class Floor extends f.Node {
+  export class Floor extends Hitbox {
 
-    private static mesh: f.MeshSprite = new f.MeshSprite();
-    //private static material: f.Material = new f.Material("Floor", f.ShaderUniColor, new f.CoatColored(f.Color.CSS("blue", 0.5)));
-    private static readonly pivot: f.Matrix4x4 = f.Matrix4x4.TRANSLATION(f.Vector3.Y(-0.5));
     private static sprites: Sprite[];
     
 
@@ -14,14 +11,14 @@ namespace Skyward {
  
       this.addComponent(new f.ComponentTransform());
       //this.addComponent(new f.ComponentMaterial(Floor.material));
-      let cmpMesh: f.ComponentMesh = new f.ComponentMesh(Floor.mesh);
+      let cmpMesh: f.ComponentMesh = new f.ComponentMesh(this.mesh);
 
       let nodeSprite: NodeSprite = new NodeSprite("FloorSprite", Floor.sprites[0]);
       nodeSprite.activate(false);
       this.appendChild(nodeSprite);
 
       cmpMesh.pivot.translateY(-0.5);
-      cmpMesh.pivot = Floor.pivot;
+      cmpMesh.pivot = this.pivot;
       this.addComponent(cmpMesh);
       this.show();
     }
@@ -39,43 +36,6 @@ namespace Skyward {
     public show(): void {
       for (let child of this.getChildren())
         child.activate(child.name == "FloorSprite");
-    }
-
-    public getCurrentHitbox(rotation: number): f.Rectangle {
-
-      let size : f.Vector2;
-      let rect: f.Rectangle = f.Rectangle.GET(0, 0, 100, 100);
-      let topleft: f.Vector3 = new f.Vector3(-0.5 , 0.5, 0);
-      let bottomright: f.Vector3 = new f.Vector3(0.5, -0.5, 0);
-      
-      //let pivot: f.Matrix4x4 = this.getComponent(f.ComponentMesh).pivot;
-      let mtxResult: f.Matrix4x4 = f.Matrix4x4.MULTIPLICATION(this.mtxWorld, Floor.pivot);
-      topleft.transform(mtxResult, true);
-      bottomright.transform(mtxResult, true);
-
-      if(rotation == 90 || rotation == -90)
-      {
-        size = new f.Vector2(bottomright.z - topleft.z, bottomright.y - topleft.y);
-
-        if (rotation == -90)
-        rect.position = new f.Vector2(this.cmpTransform.local.translation.z -.5, this.cmpTransform.local.translation.y);
-        if (rotation == 90)
-        rect.position = new f.Vector2(this.cmpTransform.local.translation.z +.5, this.cmpTransform.local.translation.y);
-      }
-      // if rotation is 0/180
-      else
-      {
-        size = new f.Vector2(bottomright.x - topleft.x, bottomright.y - topleft.y);
-        rect.position = topleft.toVector2();
-      }
-      rect.size = size;
-      return rect;
-    }
-
-    public getFloorRotation(): number{
-      let rotation: number =  this.cmpTransform.local.rotation.y; 
-      return rotation;    
-    }
-   
+    }   
   }
 }

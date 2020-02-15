@@ -17,7 +17,6 @@ var Skyward;
                 }
                 // f.Debug.log(this.cmpTransform.local.translation.x);
             };
-            let hitbox = new Skyward.Hitbox();
             this.addComponent(new f.ComponentTransform());
             let cmpMesh = new f.ComponentMesh(this.mesh);
             cmpMesh.pivot.translateY(-0.5);

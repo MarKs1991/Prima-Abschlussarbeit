@@ -3,16 +3,11 @@ var Skyward;
 (function (Skyward) {
     var f = FudgeCore;
     class Hitbox extends f.Node {
-        constructor(_name) {
-            super(_name);
-            this.mesh = new f.MeshSprite();
+        constructor() {
+            super(...arguments);
             // private static material: f.Material = new f.Material("Hitbox", f.ShaderUniColor, new f.CoatColored(f.Color.CSS("blue", 0.5)));
             this.pivot = f.Matrix4x4.TRANSLATION(f.Vector3.Y(-0.5));
-            /* this.addComponent(new f.ComponentTransform());
-             let cmpMesh: f.ComponentMesh = new f.ComponentMesh(this.mesh);
-             cmpMesh.pivot = this.pivot;
-             this.addComponent(cmpMesh);
- */
+            this.mesh = new f.MeshSprite();
         }
         getCurrentHitbox(rotation) {
             let size;
@@ -37,6 +32,10 @@ var Skyward;
             }
             rect.size = size;
             return rect;
+        }
+        getRotation() {
+            let rotation = this.cmpTransform.local.rotation.y;
+            return rotation;
         }
     }
     Skyward.Hitbox = Hitbox;
