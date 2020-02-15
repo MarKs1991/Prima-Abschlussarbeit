@@ -23,7 +23,7 @@ namespace Skyward {
         let canvas: HTMLCanvasElement = document.querySelector("canvas");
         let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
     
-        game = new Game("Game");
+        game = new Game();
         game.buildGame(compCam);
  
         f.RenderManager.initialize(true, false);

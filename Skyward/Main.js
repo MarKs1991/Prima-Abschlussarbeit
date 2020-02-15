@@ -12,7 +12,7 @@ var Skyward;
     function initialize() {
         let canvas = document.querySelector("canvas");
         let crc2 = canvas.getContext("2d");
-        Skyward.game = new Skyward.Game("Game");
+        Skyward.game = new Skyward.Game();
         Skyward.game.buildGame(compCam);
         Skyward.f.RenderManager.initialize(true, false);
         Skyward.viewport.initialize("Viewport", Skyward.game, compCam, canvas);
