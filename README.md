@@ -15,7 +15,7 @@ Repository for the module "Prototyping interactive media-applications and games"
 |    | Titel                 |
 |    | Name                  |
 |    | Matrikelnummer        |
-|  1 | Nutzerinteraktion     | Der Nutzer kann mit der Applikation interagieren. Mit welchen Mitteln und welchen Aktionen werden welche Reaktionen ausgelöst? |
+|  1 | Nutzerinteraktion     | Der Spieler kann mit A und D nach rechts den Spielcharakter nach links und rechts bewegen, mit der Leertaste kann gesprungen werden, wird zum Höhepunkt des Sprunges oder später erneut die Leertaste betätigt kann ein Doppelsprung vollführt werden, dies kann wiederholt werden und ein Dreifachsprung ausgeführt werden, mit den linken Pfeiltaste kann die Kamera um 90 Grad im Urzeigersinn gedreht werden, mit der rechten Pfeiltaste kann die Kamera um 90 Grad gegen den Uhrzeigersinn gedreht werden. |
 |  2 | Objektinteraktion     | Der Nutzer muss Münzen einsammelm um eine möglichst hohe Punktzahl zu erreichen. Um die Platformen zu erreichen muss der Spieler zwischen 4 verschieden Perspektiven wechseln welche verschiedene Ansichten und Abstände der Platformen offen legen. Eine Platform die aus einer Perspektive unerreichbar erscheint kann aus einer anderen in Sprungreichweite sein.       |
 |  3 | Objektanzahl variabel | Die Platformen werden zur Laufzeit zufällig generiert. Dabei bleibt allerdings sicher gestellt das die nächstliegenste Platform immer durch mindestens eine Perspektive erreichbar bleibt. 
                              |
