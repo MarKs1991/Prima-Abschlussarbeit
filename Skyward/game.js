@@ -177,4 +177,4 @@ var Skyward;
     }
     Skyward.Game = Game;
 })(Skyward || (Skyward = {}));
-//# sourceMappingURL=game.js.map
+//# sourceMappingURL=Game.js.map

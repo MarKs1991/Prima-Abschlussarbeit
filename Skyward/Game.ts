@@ -269,9 +269,8 @@ namespace Skyward {
 
               // gomez.mtxWorld.translateX(-gomez.mtxWorld.translation.x);
           }
-      }
+        }
+    }
   }
-
-}
 }
 

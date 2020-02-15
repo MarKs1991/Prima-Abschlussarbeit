@@ -100,10 +100,7 @@ namespace Skyward {
 
                     if (_direction == DIRECTION.LEFT) {
                         this.speed.x = Gomez.speedMax.x * -1;
-
                     }
-
-
                     this.speed.x = Gomez.speedMax.x; // * direction;
 
                     this.rotateSprite(direction);
@@ -137,13 +134,13 @@ namespace Skyward {
         }
 
         public jumping() {
-            if (this.speed.y == 0) {
+            if (this.speed.y > -.2 && this.speed.y < .2) {
                 this.jumps = 1;
-                this.mtxWorld.translateY(6);
+                this.mtxWorld.translateY(.1);
                 this.speed.y = 3;
                 Sound.play("jump");
             }
-            if (this.speed.y != 0 && this.speed.y < 1.5 && this.jumps < 3) {
+            if (this.speed.y != 0 && this.speed.y < 1.5 && this.jumps < 3|| this.speed.y != 0 && this.speed.y < 0 && this.jumps <= 3) {
                 this.speed.y = 3;
                 Sound.play("jump");
                 this.collectedCoins --;

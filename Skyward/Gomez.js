@@ -93,13 +93,13 @@ var Skyward;
             this.show(_action);
         }
         jumping() {
-            if (this.speed.y == 0) {
+            if (this.speed.y > -.2 && this.speed.y < .2) {
                 this.jumps = 1;
-                this.mtxWorld.translateY(6);
+                this.mtxWorld.translateY(.1);
                 this.speed.y = 3;
                 Skyward.Sound.play("jump");
             }
-            if (this.speed.y != 0 && this.speed.y < 1.5 && this.jumps < 3) {
+            if (this.speed.y != 0 && this.speed.y < 1.5 && this.jumps < 3 || this.speed.y != 0 && this.speed.y < 0 && this.jumps <= 3) {
                 this.speed.y = 3;
                 Skyward.Sound.play("jump");
                 this.collectedCoins--;
