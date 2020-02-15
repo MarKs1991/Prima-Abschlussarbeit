@@ -1,9 +1,8 @@
 # Prima
 Repository for the module "Prototyping interactive media-applications and games" at Furtwangen University
 
-[Pages-Version](https://jirkadelloro.github.io/Prima/)
 
-- [PONG](https://jirkadelloro.github.io/Prima/L06_PongFinal/Main.html)
+- [SKYWARD](https://MarKs1991.github.io/Prima-Abschlussarbeit/Skyward)
 - [CRAFTRIS](https://jirkadelloro.github.io/Prima/L13_Craftris)
 
 
