@@ -16,6 +16,9 @@ export interface Transformations {
   let keysPressed: KeyPressed = {};
   let gameOverSoundPlayed: boolean = false;
   let gameStarted: boolean = false;
+  let paused: boolean = false;
+
+  let domMenu: HTMLElement;
   
   let itemDropCounter: number = 0;
   export let soundMuteCounter: number = 0;
@@ -23,9 +26,27 @@ export interface Transformations {
   function handleKeyboard(_event: KeyboardEvent): void {
     keysPressed[_event.code] = (_event.type == "keydown");
 
-    if (_event.code == f.KEYBOARD_CODE.SPACE && _event.type == "keydown")
+    if (_event.code == f.KEYBOARD_CODE.SPACE && _event.type == "keydown" || _event.code == f.KEYBOARD_CODE.W && _event.type == "keydown")
     {
       gomez.act(ACTION.JUMP);
+    }
+
+    if (_event.code == f.KEYBOARD_CODE.P && _event.type == "keydown")
+    {
+      if(!paused)
+      {
+        pause();
+        paused = true;
+      }
+      else
+      {
+        back();
+        paused = false;
+      }
+    }
+    if (_event.code == f.KEYBOARD_CODE.O && _event.type == "keydown")
+    {
+     back();
     }
     let camtransformation: CamTransformation = Camera.camtransformations[_event.code];
 
@@ -56,6 +77,7 @@ export interface Transformations {
     document.addEventListener("keyup", handleKeyboard);
     let domMenu: HTMLElement = document.querySelector("div#Menu");
     domMenu.style.visibility = "hidden";
+    f.Loop.start(f.LOOP_MODE.TIME_GAME, 10);
   }
 
   export function end(): void {
@@ -64,10 +86,29 @@ export interface Transformations {
     window.removeEventListener("keydown", handleKeyboard);
     window.removeEventListener("keyup", handleKeyboard);
     Sound.pauseMusic();
+    f.Loop.stop();
     if (!gameOverSoundPlayed)
       Sound.play("game_over");
     gameOverSoundPlayed = true;
+ 
   }
+
+
+    function pause(): void{
+      
+      domMenu = document.querySelector("div#Pause");
+      domMenu.style.visibility = "visible";
+      f.Loop.stop();
+  }
+
+    function back():void
+    {
+      domMenu = document.querySelector("div#Pause");
+    domMenu.style.visibility = "hidden";
+      f.Loop.start(f.LOOP_MODE.TIME_GAME, 10);
+    }
+
+ 
 
   async function waitForKeyPress(_code: f.KEYBOARD_CODE): Promise<void> {
     return new Promise(_resolve => {

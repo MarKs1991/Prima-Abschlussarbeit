@@ -33,7 +33,7 @@ namespace Skyward {
 
         f.Loop.addEventListener(f.EVENT.LOOP_FRAME, update);
 
-        f.Loop.start(f.LOOP_MODE.TIME_GAME, 10);
+       
 
         start();
         

@@ -40,21 +40,30 @@ div#head {
 h1 {
   display: inline;
 }
-#Lives{
+#Lives, #LivesText{
   display: inline;
-  color: aqua;
+  color: rgb(255, 0, 0);
   top:4px;
   right: 333px;
 }
 
 
 
-#ScoreText {
+#CoinsText, #CollectedCoins {
   transform: translate(-5%, 0);
-}  
+  color: rgb(255, 217, 0);
+}
+
 
 div#Menu, div#Over {
   display: inline-block;
+  position: absolute;
+  text-shadow: 2px 0px 2px black, -2px 0px 2px black, 0px 2px 2px black, 0px -2px 2px black;
+  top: 10%;
+  left: 1%;
+}
+div#Pause{
+  visibility: hidden;
   position: absolute;
   text-shadow: 2px 0px 2px black, -2px 0px 2px black, 0px 2px 2px black, 0px -2px 2px black;
   top: 10%;

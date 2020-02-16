@@ -24,16 +24,15 @@
 <body>
   <div id="head">
     <h1 style="text-align: left;">Skyward</h1>
-    <h1 id="ScoreText" style="text-align: right;">Coins:</h1><h1 id="CollectedCoins" style="text-align: left;">0</h1>
-    <h1 id="ScoreText" style="text-align: right;">Lives</h1><h1 id="Lives" style="text-align: left;"></h1>
+    <h1 id="CoinsText" style="text-align: right;">Coins: </h1><h1 id="CollectedCoins" style="text-align: left;">0</h1>
+    <h1 id="LivesText" style="text-align: right;">Lives: </h1><h1 id="Lives" style="text-align: left;"></h1>
     <h1 id="Sound" style="text-align: right;">Music: ON</h1>
   </div>
 
   <canvas style="background-color: black"></canvas>
 
   <div>
-    <span>Left: A | Right: D | Jump: SPACE | Rotate Perspective Left/Right <= =
-      >  | Toggle Music: M</span>
+    <span>Left: A | Right: D | Jump: W or SPACE | Rotate Perspective Left/Right <= =>  | Toggle Music: M | Pause: P | Fullscreen: F11 | Restart: F5</span>
     <span id="credits">PRIMA Abschlussarbeit Markus Schürmann Martikelnr.: 256667</span>
   </div>
 
@@ -47,9 +46,16 @@
         ENTER Start Game
       </h1>
     </div>
+    <div id="Pause">
+    <h1>
+      Paused
+    </h1>
+  </div>
+
+
     <div id="Over">
       <h1>
-        GAME OVER
+        You have fallen.
       </h1><br />
       press F5 to restart
     </div>

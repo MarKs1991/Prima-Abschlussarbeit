@@ -7822,7 +7822,7 @@ var FudgeCore;
          * @param _syncWithAnimationFrame Experimental and only applicable in TIME-modes. Should defer the loop-cycle until the next possible animation frame.
          */
         static start(_mode = LOOP_MODE.FRAME_REQUEST, _fps = 60, _syncWithAnimationFrame = false) {
-            Loop.stop();
+            //Loop.stop();
             Loop.timeStartGame = FudgeCore.Time.game.get();
             Loop.timeStartReal = performance.now();
             Loop.timeLastFrameGame = Loop.timeStartGame;

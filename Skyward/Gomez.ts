@@ -155,10 +155,16 @@ namespace Skyward {
             if (this.cmpTransform.local.translation.y < -10) {
                 this.lives --;
                 document.getElementById("Lives").innerHTML = this.lives.toString();
+
+                if (this.lives < 1){
+                  end();
+                }
+
                 this.cmpTransform.local.translation = new f.Vector3(0, 1, 0);
                 this.speed.y = 0;
                 // this.cmpTransform.local.translation = Vector3Array[this.lastHitIndex];
             }
+           
         }
 
         private rotateSprite(direction: number){

@@ -55,7 +55,7 @@ namespace Skyward {
             this.CamZoom.addComponent(new f.ComponentTransform);
             camera.appendChild(this.CamZoom);
             this.appendChild(camera);
-            compCam.pivot.translateZ(30);
+            compCam.pivot.translateZ(40);
 
             return this;
         }

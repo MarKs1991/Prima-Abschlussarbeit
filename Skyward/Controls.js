@@ -4,12 +4,27 @@ var Skyward;
     let keysPressed = {};
     let gameOverSoundPlayed = false;
     let gameStarted = false;
+    let paused = false;
+    let domMenu;
     let itemDropCounter = 0;
     Skyward.soundMuteCounter = 0;
     function handleKeyboard(_event) {
         keysPressed[_event.code] = (_event.type == "keydown");
-        if (_event.code == Skyward.f.KEYBOARD_CODE.SPACE && _event.type == "keydown") {
+        if (_event.code == Skyward.f.KEYBOARD_CODE.SPACE && _event.type == "keydown" || _event.code == Skyward.f.KEYBOARD_CODE.W && _event.type == "keydown") {
             Skyward.gomez.act(Skyward.ACTION.JUMP);
+        }
+        if (_event.code == Skyward.f.KEYBOARD_CODE.P && _event.type == "keydown") {
+            if (!paused) {
+                pause();
+                paused = true;
+            }
+            else {
+                back();
+                paused = false;
+            }
+        }
+        if (_event.code == Skyward.f.KEYBOARD_CODE.O && _event.type == "keydown") {
+            back();
         }
         let camtransformation = Skyward.Camera.camtransformations[_event.code];
         if (camtransformation) {
@@ -33,6 +48,7 @@ var Skyward;
         document.addEventListener("keyup", handleKeyboard);
         let domMenu = document.querySelector("div#Menu");
         domMenu.style.visibility = "hidden";
+        Skyward.f.Loop.start(Skyward.f.LOOP_MODE.TIME_GAME, 10);
     }
     Skyward.start = start;
     function end() {
@@ -41,11 +57,22 @@ var Skyward;
         window.removeEventListener("keydown", handleKeyboard);
         window.removeEventListener("keyup", handleKeyboard);
         Skyward.Sound.pauseMusic();
+        Skyward.f.Loop.stop();
         if (!gameOverSoundPlayed)
             Skyward.Sound.play("game_over");
         gameOverSoundPlayed = true;
     }
     Skyward.end = end;
+    function pause() {
+        domMenu = document.querySelector("div#Pause");
+        domMenu.style.visibility = "visible";
+        Skyward.f.Loop.stop();
+    }
+    function back() {
+        domMenu = document.querySelector("div#Pause");
+        domMenu.style.visibility = "hidden";
+        Skyward.f.Loop.start(Skyward.f.LOOP_MODE.TIME_GAME, 10);
+    }
     async function waitForKeyPress(_code) {
         return new Promise(_resolve => {
             window.addEventListener("keydown", hndKeyDown);

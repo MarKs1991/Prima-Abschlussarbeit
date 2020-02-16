@@ -18,7 +18,6 @@ var Skyward;
         Skyward.viewport.initialize("Viewport", Skyward.game, compCam, canvas);
         Skyward.viewport.draw();
         Skyward.f.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
-        Skyward.f.Loop.start(Skyward.f.LOOP_MODE.TIME_GAME, 10);
         Skyward.start();
         function update(_event) {
             Skyward.processInput();

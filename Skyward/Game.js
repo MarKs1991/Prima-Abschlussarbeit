@@ -32,7 +32,7 @@ var Skyward;
             this.CamZoom.addComponent(new Skyward.f.ComponentTransform);
             Skyward.camera.appendChild(this.CamZoom);
             this.appendChild(Skyward.camera);
-            compCam.pivot.translateZ(30);
+            compCam.pivot.translateZ(40);
             return this;
         }
         createParentNodes() {
