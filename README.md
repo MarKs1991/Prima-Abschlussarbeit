@@ -2,7 +2,7 @@
 Repository for the module "Prototyping interactive media-applications and games" at Furtwangen University
 
 
-- [SKYWARD](https://MarKs1991.github.io/Prima-Abschlussarbeit/Skyward)
+- [SKYWARD](https://MarKs1991.github.io/Prima-Abschlussarbeit/Skyward/Build)
 
 
 ## Checkliste für Leistungsnachweis
