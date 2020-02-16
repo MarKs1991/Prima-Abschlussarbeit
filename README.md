@@ -3,7 +3,6 @@ Repository for the module "Prototyping interactive media-applications and games"
 
 
 - [SKYWARD](https://MarKs1991.github.io/Prima-Abschlussarbeit/Skyward)
-- [CRAFTRIS](https://jirkadelloro.github.io/Prima/L13_Craftris)
 
 
 ## Checkliste für Leistungsnachweis
