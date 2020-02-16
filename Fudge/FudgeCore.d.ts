@@ -913,13 +913,13 @@ declare namespace FudgeCore {
         /**
          * Stops the loop
          */
-       /* 
+       
         static stop(): void;
         static getFpsGameAverage(): number;
         static getFpsRealAverage(): number;
         private static loop;
         private static loopFrame;
-        private static loopTime;*/
+        private static loopTime;
     }
 }
 declare namespace FudgeCore {
