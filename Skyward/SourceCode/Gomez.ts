@@ -22,7 +22,7 @@ namespace Skyward {
         public speed : f.Vector3 = f.Vector3.ZERO();
         public lastHitIndex : number;
 
-        public collectedCoins : number = 0;
+        private collectedCoins : number = 0;
         private lives : number;
 
         private jumps : number = 0;
@@ -133,7 +133,7 @@ namespace Skyward {
 
         }
 
-        public jumping() {
+        public jumping(): void {
             if (this.speed.y > -.2 && this.speed.y < .2) {
                 this.jumps = 1;
                 this.mtxWorld.translateY(.1);
@@ -150,7 +150,7 @@ namespace Skyward {
         }
 
 
-        private loseLive() {
+        private loseLive(): void {
 
             if (this.cmpTransform.local.translation.y < -10) {
                 this.lives --;
@@ -167,7 +167,7 @@ namespace Skyward {
            
         }
 
-        private rotateSprite(direction: number){
+        private rotateSprite(direction: number): void{
           let rotY: number = floor.cmpTransform.local.rotation.y;
           if (rotY == 90){
               this.cmpTransform.local.rotation = f.Vector3.Y(90 * direction);

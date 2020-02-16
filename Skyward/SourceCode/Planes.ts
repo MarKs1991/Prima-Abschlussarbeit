@@ -4,10 +4,8 @@ namespace Skyward {
     export class Planes extends Hitbox {
 
         private static sprites : Sprite[];
-        private static speedMax : f.Vector2 = new f.Vector2(1.5, 5); // units per second
-        private speed : f.Vector3 = f.Vector3.ZERO();
-        private static gravity : f.Vector2 = f.Vector2.X(-4);
 
+        private speed : f.Vector3 = f.Vector3.ZERO();
         public constructor(_name : string = "Planes") {
             super("Planes");
 

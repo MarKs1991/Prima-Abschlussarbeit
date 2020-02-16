@@ -20,7 +20,6 @@ export interface Transformations {
 
   let domMenu: HTMLElement;
   
-  let itemDropCounter: number = 0;
   export let soundMuteCounter: number = 0;
 
   function handleKeyboard(_event: KeyboardEvent): void {

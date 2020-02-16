@@ -11,7 +11,6 @@ namespace Skyward {
 
     export let levelData: Object[];
 
-    export let gameNode: f.Node;
     export let game = new Game("Game");
 
     function waitForJson(): void {
@@ -21,8 +20,8 @@ namespace Skyward {
     function initialize(): void {
 
         let canvas: HTMLCanvasElement = document.querySelector("canvas");
-        let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
-    
+      //let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
+   
         game = new Game();
         game.buildGame(compCam);
  
@@ -44,8 +43,8 @@ namespace Skyward {
             viewport.draw();
             
             //muteSounds();
-            crc2.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
-            crc2.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
+            //crc2.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
+            //crc2.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
 
             if (Sound.muted)
             document.getElementById("Sound").innerHTML = "Music: OFF";

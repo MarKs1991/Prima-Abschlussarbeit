@@ -3,8 +3,6 @@ namespace Skyward {
 
   export class Skybox extends f.Node {
     private static mesh: f.MeshSprite = new f.MeshSprite();
-    //private static material: f.Material = new f.Material("Skybox", f.ShaderUniColor, new f.CoatColored(f.Color.CSS("red", 0.5)));
-    private static readonly pivot: f.Matrix4x4 = f.Matrix4x4.TRANSLATION(f.Vector3.Y(-0.5));
     private static sprites: Sprite[];
     
 
@@ -20,7 +18,7 @@ namespace Skyward {
 
       //nodesprite
       //cmpMesh.pivot.translateY(-0.5);
-      cmpMesh.pivot = Skybox.pivot;
+      //cmpMesh.pivot = Skybox.pivot;
       this.addComponent(cmpMesh);
       this.show();
     }

@@ -63,7 +63,7 @@ namespace Skyward {
           break;
       }
 
-      rects.forEach((_rect: f.Rectangle) => f.Debug.log(_rect.toString()));
+      //rects.forEach((_rect: f.Rectangle) => f.Debug.log(_rect.toString()));
       this.generate(_texture, rects, _resolutionQuad, _origin);
     }
 
