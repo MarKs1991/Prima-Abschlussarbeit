@@ -13,7 +13,7 @@ var Skyward;
             this.appendChild(nodeSprite);
             //nodesprite
             //cmpMesh.pivot.translateY(-0.5);
-            cmpMesh.pivot = Skybox.pivot;
+            //cmpMesh.pivot = Skybox.pivot;
             this.addComponent(cmpMesh);
             this.show();
         }
@@ -30,8 +30,6 @@ var Skyward;
         }
     }
     Skybox.mesh = new f.MeshSprite();
-    //private static material: f.Material = new f.Material("Skybox", f.ShaderUniColor, new f.CoatColored(f.Color.CSS("red", 0.5)));
-    Skybox.pivot = f.Matrix4x4.TRANSLATION(f.Vector3.Y(-0.5));
     Skyward.Skybox = Skybox;
 })(Skyward || (Skyward = {}));
 //# sourceMappingURL=Skybox.js.map

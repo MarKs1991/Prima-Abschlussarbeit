@@ -40,8 +40,6 @@ var Skyward;
                 child.activate(child.name == "PlanesSprite");
         }
     }
-    Planes.speedMax = new f.Vector2(1.5, 5); // units per second
-    Planes.gravity = f.Vector2.X(-4);
     Skyward.Planes = Planes;
 })(Skyward || (Skyward = {}));
 //# sourceMappingURL=Planes.js.map

@@ -9,7 +9,6 @@ namespace Skyward {
   export class Sound {
     public static atmoDelay: number = 0;
     private static sounds: Sounds = {};
-    private static atmoBeat: number = 1;
     public static muted: boolean = false;
     public static musicStarted: boolean = false;
 

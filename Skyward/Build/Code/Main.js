@@ -11,7 +11,7 @@ var Skyward;
     }
     function initialize() {
         let canvas = document.querySelector("canvas");
-        let crc2 = canvas.getContext("2d");
+        //let crc2: CanvasRenderingContext2D = canvas.getContext("2d");
         Skyward.game = new Skyward.Game();
         Skyward.game.buildGame(compCam);
         Skyward.f.RenderManager.initialize(true, false);
@@ -24,8 +24,8 @@ var Skyward;
             Skyward.camera.cmpTransform.local.translation = new Skyward.f.Vector3(Skyward.gomez.cmpTransform.local.translation.x, Skyward.gomez.cmpTransform.local.translation.y, Skyward.gomez.cmpTransform.local.translation.z);
             Skyward.viewport.draw();
             //muteSounds();
-            crc2.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
-            crc2.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
+            //crc2.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
+            //crc2.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
             if (Skyward.Sound.muted)
                 document.getElementById("Sound").innerHTML = "Music: OFF";
             else

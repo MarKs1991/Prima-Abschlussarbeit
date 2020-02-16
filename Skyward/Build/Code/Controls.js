@@ -6,7 +6,6 @@ var Skyward;
     let gameStarted = false;
     let paused = false;
     let domMenu;
-    let itemDropCounter = 0;
     Skyward.soundMuteCounter = 0;
     function handleKeyboard(_event) {
         keysPressed[_event.code] = (_event.type == "keydown");

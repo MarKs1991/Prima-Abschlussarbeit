@@ -3,14 +3,13 @@ var Skyward;
 (function (Skyward) {
     Skyward.f = FudgeCore;
     Skyward.camera = new Skyward.Camera();
-    // export let cam: = new Camera;
-    Skyward.FloorArray = [];
-    Skyward.CoinArray = [];
-    Skyward.Vector3Array = [];
     class Game extends Skyward.f.Node {
         constructor(_name) {
             super(_name);
             this.CamZoom = new Skyward.f.Node("CamZoom");
+            this.FloorArray = [];
+            this.CoinArray = [];
+            this.Vector3Array = [];
         }
         buildGame(compCam) {
             let img = document.querySelector("img");
@@ -23,8 +22,8 @@ var Skyward;
             Skyward.Planes.generateSprites(txtHare);
             Skyward.Gomez.generateSprites(txtHare);
             this.createParentNodes();
-            this.appendChild(Skyward.collectorAble);
             Skyward.level = this.createLevel();
+            this.appendChild(Skyward.collectorAble);
             this.appendChild(Skyward.level);
             this.appendChild(Skyward.gomez);
             this.appendChild(Skyward.enemys);
@@ -50,12 +49,12 @@ var Skyward;
             Skyward.floor.cmpTransform.local.translateX(0);
             Skyward.floor.cmpTransform.local.translateY(0);
             Skyward.floor.cmpTransform.local.translateZ(0);
-            Skyward.FloorArray.push(Skyward.floor);
+            this.FloorArray.push(Skyward.floor);
             Skyward.level.appendChild(Skyward.floor);
             // For Fixed Starting Platform
-            Skyward.Vector3Array[0] = new Skyward.f.Vector3(Skyward.FloorArray[0].cmpTransform.local.translation.x, Skyward.FloorArray[0].cmpTransform.local.translation.y, Skyward.FloorArray[0].cmpTransform.local.translation.z);
-            Skyward.floor.cmpTransform.local.translateZ(-Skyward.Vector3Array[0].y);
-            this.createCoin((Skyward.FloorArray[0].cmpTransform.local.translation));
+            this.Vector3Array[0] = new Skyward.f.Vector3(this.FloorArray[0].cmpTransform.local.translation.x, this.FloorArray[0].cmpTransform.local.translation.y, this.FloorArray[0].cmpTransform.local.translation.z);
+            Skyward.floor.cmpTransform.local.translateZ(-this.Vector3Array[0].y);
+            this.createCoin((this.FloorArray[0].cmpTransform.local.translation));
             let platformNumber = Skyward.levelData[0].PlatformNumber;
             let fixedDistance = Skyward.levelData[0].FixedDistance;
             let lastPlatform = new Skyward.f.Vector3();
@@ -88,14 +87,14 @@ var Skyward;
                         Skyward.floor.cmpTransform.local.translateZ(lastPlatform.z + fixedDistance);
                     }
                 }
-                Skyward.FloorArray.push(Skyward.floor);
+                this.FloorArray.push(Skyward.floor);
                 Skyward.level.appendChild(Skyward.floor);
                 lastPlatform = new Skyward.f.Vector3(Skyward.floor.cmpTransform.local.translation.x, Skyward.floor.cmpTransform.local.translation.y, Skyward.floor.cmpTransform.local.translation.z);
-                Skyward.Vector3Array[i] = new Skyward.f.Vector3(Skyward.FloorArray[i].cmpTransform.local.translation.x, Skyward.FloorArray[i].cmpTransform.local.translation.y, Skyward.FloorArray[i].cmpTransform.local.translation.z);
-                Skyward.floor.cmpTransform.local.translateZ(-Skyward.Vector3Array[i].z);
-                this.createCoin((Skyward.FloorArray[i].cmpTransform.local.translation));
+                this.Vector3Array[i] = new Skyward.f.Vector3(this.FloorArray[i].cmpTransform.local.translation.x, this.FloorArray[i].cmpTransform.local.translation.y, this.FloorArray[i].cmpTransform.local.translation.z);
+                Skyward.floor.cmpTransform.local.translateZ(-this.Vector3Array[i].z);
+                this.createCoin((this.FloorArray[i].cmpTransform.local.translation));
                 if (i > platformNumber / 4) {
-                    this.createPlane(Skyward.FloorArray[i].cmpTransform.local.translation);
+                    this.createPlane(this.FloorArray[i].cmpTransform.local.translation);
                 }
             }
             let skybox = new Skyward.Skybox();
@@ -119,53 +118,53 @@ var Skyward;
             this.appendChild(skybox);
             return Skyward.level;
         }
-        createCoin(Position) {
+        createCoin(position) {
             let coin = new Skyward.Coin();
             coin.cmpTransform.local.scaleY(1);
             coin.cmpTransform.local.scaleX(1);
-            coin.cmpTransform.local.translate(Position);
+            coin.cmpTransform.local.translate(position);
             coin.cmpTransform.local.translateY(1);
             Skyward.collectorAble.appendChild(coin);
-            Skyward.CoinArray.push(coin);
+            this.CoinArray.push(coin);
         }
-        createPlane(Position) {
+        createPlane(position) {
             let planes = new Skyward.Planes();
             planes.cmpTransform.local.scaleY(1);
             planes.cmpTransform.local.scaleX(1);
-            planes.cmpTransform.local.translate(Position);
+            planes.cmpTransform.local.translate(position);
             planes.cmpTransform.local.translateY(1);
             Skyward.enemys.appendChild(planes);
         }
         normalizeTransforms(rotDirection) {
             Skyward.gomez.cmpTransform.local.rotateY(rotDirection);
             let NodeArray = [Skyward.floor, Skyward.coin];
-            let ParentArray = [Skyward.FloorArray, Skyward.CoinArray];
+            let ParentArray = [this.FloorArray, this.CoinArray];
             for (let j = 0; j <= NodeArray.length - 1; j++) {
                 let i = 0;
                 for (NodeArray[j] of ParentArray[j]) 
-                // for (let m = 0; m <= Vector3Array.length - 1; m++)
+                // for (let m = 0; m <= this.Vector3Array.length - 1; m++)
                 {
                     NodeArray[j].cmpTransform.local.rotateY(rotDirection);
                     let rotation = NodeArray[j].cmpTransform.local.rotation.y;
                     if (rotation == 90 || rotation == -90) {
-                        NodeArray[j].cmpTransform.local.translateX(-Skyward.Vector3Array[i].x);
+                        NodeArray[j].cmpTransform.local.translateX(-this.Vector3Array[i].x);
                         // lastPos = gomez.cmpTransform.local.translation.x;
                         Skyward.gomez.cmpTransform.local.translateX(-Skyward.gomez.cmpTransform.local.translation.x);
                         // gomez.cmpTransform.local.translation.x = 0;
-                        NodeArray[j].cmpTransform.local.translateZ(Skyward.Vector3Array[i].z);
+                        NodeArray[j].cmpTransform.local.translateZ(this.Vector3Array[i].z);
                         if (i == 0 && j == 0)
-                            Skyward.gomez.cmpTransform.local.translateZ(Skyward.Vector3Array[Skyward.gomez.lastHitIndex].z);
+                            Skyward.gomez.cmpTransform.local.translateZ(this.Vector3Array[Skyward.gomez.lastHitIndex].z);
                     }
                     if (rotation > -40 && rotation < 40 || rotation == 180 || rotation == -180) { // gomez.cmpTransform.local.translation.x = gomez.lastHit.x;
-                        NodeArray[j].cmpTransform.local.translateZ(-Skyward.Vector3Array[i].z);
+                        NodeArray[j].cmpTransform.local.translateZ(-this.Vector3Array[i].z);
                         Skyward.gomez.cmpTransform.local.translateZ(-Skyward.gomez.cmpTransform.local.translation.z);
                         if (rotation == 180) { // gomez.cmpTransform.local.rotateY(90);
                         }
                         // gomez.cmpTransform.local.translation.z = 0;
                         // gomez.cmpTransform.local.translateX(lastPos );
-                        NodeArray[j].cmpTransform.local.translateX(Skyward.Vector3Array[i].x);
+                        NodeArray[j].cmpTransform.local.translateX(this.Vector3Array[i].x);
                         if (i == 0 && j == 0) {
-                            Skyward.gomez.cmpTransform.local.translateX(Skyward.Vector3Array[Skyward.gomez.lastHitIndex].x);
+                            Skyward.gomez.cmpTransform.local.translateX(this.Vector3Array[Skyward.gomez.lastHitIndex].x);
                         }
                     }
                     // f.Debug.log("rot" + floor.cmpTransform.local.rotation.y);

@@ -44,7 +44,6 @@ var Skyward;
     }
     Sound.atmoDelay = 0;
     Sound.sounds = {};
-    Sound.atmoBeat = 1;
     Sound.muted = false;
     Sound.musicStarted = false;
     Skyward.Sound = Sound;

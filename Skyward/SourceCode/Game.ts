@@ -17,9 +17,9 @@ namespace Skyward {
     export class Game extends f.Node {
 
         private CamZoom : f.Node = new f.Node("CamZoom");
-        private  FloorArray: Floor[] = [];
-        private  CoinArray: Coin[] = [];
-        private  Vector3Array: f.Vector3[] = [];
+        private FloorArray: Floor[] = [];
+        private CoinArray: Coin[] = [];
+        private Vector3Array: f.Vector3[] = [];
 
         public constructor(_name? : string) {
             super(_name);
