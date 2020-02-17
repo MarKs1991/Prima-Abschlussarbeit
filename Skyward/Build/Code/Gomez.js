@@ -120,7 +120,7 @@ var Skyward;
             }
         }
         rotateSprite(direction) {
-            let rotY = Skyward.floor.cmpTransform.local.rotation.y;
+            let rotY = Skyward.game.floor.cmpTransform.local.rotation.y;
             if (rotY == 90) {
                 this.cmpTransform.local.rotation = f.Vector3.Y(90 * direction);
             }
@@ -136,7 +136,7 @@ var Skyward;
         }
         checkCollision() {
             let i = 0;
-            for (let floor of Skyward.level.getChildren()) {
+            for (let floor of Skyward.game.level.getChildren()) {
                 let rotation = floor.cmpTransform.local.rotation.y;
                 let rect = new f.Rectangle();
                 let CharacterCollider;
@@ -165,7 +165,7 @@ var Skyward;
             }
         }
         collectCoins() {
-            for (let coin of Skyward.collectorAble.getChildren()) {
+            for (let coin of Skyward.game.collectorAble.getChildren()) {
                 let rotation = coin.cmpTransform.local.rotation.y;
                 let rect = new f.Rectangle();
                 let CharacterCollider;
@@ -181,7 +181,7 @@ var Skyward;
                 // console.log(rect.toString());
                 let hit = rect.isInside(CharacterCollider);
                 if (hit) {
-                    Skyward.collectorAble.removeChild(coin);
+                    Skyward.game.collectorAble.removeChild(coin);
                     this.collectedCoins++;
                     document.getElementById("CollectedCoins").innerHTML = this.collectedCoins.toString();
                     Skyward.Sound.play("coin");
@@ -189,7 +189,7 @@ var Skyward;
             }
         }
         hitPlayer() {
-            for (let planes of Skyward.enemys.getChildren()) {
+            for (let planes of Skyward.game.enemys.getChildren()) {
                 let rotation = planes.cmpTransform.local.rotation.y;
                 let rect = new f.Rectangle();
                 let CharacterCollider;
@@ -205,7 +205,7 @@ var Skyward;
                 // console.log(rect.toString());
                 let hit = rect.isInside(CharacterCollider);
                 if (hit) {
-                    Skyward.gomez.cmpTransform.local.translateX(1);
+                    Skyward.game.gomez.cmpTransform.local.translateX(1);
                 }
             }
         }

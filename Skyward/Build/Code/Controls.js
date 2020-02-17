@@ -10,7 +10,7 @@ var Skyward;
     function handleKeyboard(_event) {
         keysPressed[_event.code] = (_event.type == "keydown");
         if (_event.code == Skyward.f.KEYBOARD_CODE.SPACE && _event.type == "keydown" || _event.code == Skyward.f.KEYBOARD_CODE.W && _event.type == "keydown") {
-            Skyward.gomez.act(Skyward.ACTION.JUMP);
+            Skyward.game.gomez.act(Skyward.ACTION.JUMP);
         }
         if (_event.code == Skyward.f.KEYBOARD_CODE.P && _event.type == "keydown") {
             if (!paused) {
@@ -27,7 +27,7 @@ var Skyward;
         }
         let camtransformation = Skyward.Camera.camtransformations[_event.code];
         if (camtransformation) {
-            Skyward.camera.cammove(camtransformation);
+            Skyward.game.camera.cammove(camtransformation);
             if (keysPressed[Skyward.f.KEYBOARD_CODE.ARROW_RIGHT]) {
                 Skyward.Sound.play("rotation");
                 Skyward.game.normalizeTransforms(90);
@@ -122,14 +122,14 @@ var Skyward;
         }
         //movement
         if (keysPressed[Skyward.f.KEYBOARD_CODE.A]) {
-            Skyward.gomez.act(Skyward.ACTION.WALK, Skyward.DIRECTION.LEFT);
+            Skyward.game.gomez.act(Skyward.ACTION.WALK, Skyward.DIRECTION.LEFT);
             return;
         }
         if (keysPressed[Skyward.f.KEYBOARD_CODE.D]) {
-            Skyward.gomez.act(Skyward.ACTION.WALK, Skyward.DIRECTION.RIGHT);
+            Skyward.game.gomez.act(Skyward.ACTION.WALK, Skyward.DIRECTION.RIGHT);
             return;
         }
-        Skyward.gomez.act(Skyward.ACTION.IDLE);
+        Skyward.game.gomez.act(Skyward.ACTION.IDLE);
     }
     Skyward.processInput = processInput;
 })(Skyward || (Skyward = {}));

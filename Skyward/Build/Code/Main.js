@@ -21,7 +21,7 @@ var Skyward;
         Skyward.start();
         function update(_event) {
             Skyward.processInput();
-            Skyward.camera.cmpTransform.local.translation = new Skyward.f.Vector3(Skyward.gomez.cmpTransform.local.translation.x, Skyward.gomez.cmpTransform.local.translation.y, Skyward.gomez.cmpTransform.local.translation.z);
+            Skyward.game.camera.cmpTransform.local.translation = new Skyward.f.Vector3(Skyward.game.gomez.cmpTransform.local.translation.x, Skyward.game.gomez.cmpTransform.local.translation.y, Skyward.game.gomez.cmpTransform.local.translation.z);
             Skyward.viewport.draw();
             //muteSounds();
             //crc2.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);

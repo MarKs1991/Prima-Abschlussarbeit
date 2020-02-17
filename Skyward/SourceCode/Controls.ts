@@ -27,7 +27,7 @@ export interface Transformations {
 
     if (_event.code == f.KEYBOARD_CODE.SPACE && _event.type == "keydown" || _event.code == f.KEYBOARD_CODE.W && _event.type == "keydown")
     {
-      gomez.act(ACTION.JUMP);
+      game.gomez.act(ACTION.JUMP);
     }
 
     if (_event.code == f.KEYBOARD_CODE.P && _event.type == "keydown")
@@ -50,7 +50,7 @@ export interface Transformations {
     let camtransformation: CamTransformation = Camera.camtransformations[_event.code];
 
     if (camtransformation) {
-        camera.cammove(camtransformation);
+        game.camera.cammove(camtransformation);
   
   
   
@@ -170,16 +170,16 @@ export interface Transformations {
     //movement
 
     if (keysPressed[f.KEYBOARD_CODE.A]) {   
-        gomez.act(ACTION.WALK, DIRECTION.LEFT);
+      game.gomez.act(ACTION.WALK, DIRECTION.LEFT);
       return;
     }
 
     if (keysPressed[f.KEYBOARD_CODE.D]) { 
-        gomez.act(ACTION.WALK, DIRECTION.RIGHT);
+      game.gomez.act(ACTION.WALK, DIRECTION.RIGHT);
       return;
     }    
     
-    gomez.act(ACTION.IDLE);
+    game.gomez.act(ACTION.IDLE);
 
   }
 }

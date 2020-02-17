@@ -29,7 +29,7 @@ var Skyward;
             };
             move.rotation.scale(1 / animationSteps);
             f.Time.game.setTimer(10, animationSteps, function () {
-                Skyward.camera.move(move);
+                Skyward.game.camera.move(move);
                 //f.RenderManager.update();
                 //viewport.draw();
             });

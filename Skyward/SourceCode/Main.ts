@@ -39,7 +39,7 @@ namespace Skyward {
         function update(_event: f.Eventƒ): void {
             
             processInput();
-            camera.cmpTransform.local.translation = new f.Vector3(gomez.cmpTransform.local.translation.x, gomez.cmpTransform.local.translation.y, gomez.cmpTransform.local.translation.z);
+            game.camera.cmpTransform.local.translation = new f.Vector3(game.gomez.cmpTransform.local.translation.x, game.gomez.cmpTransform.local.translation.y, game.gomez.cmpTransform.local.translation.z);
             viewport.draw();
             
             //muteSounds();

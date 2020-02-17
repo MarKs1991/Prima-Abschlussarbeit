@@ -47,7 +47,7 @@ namespace Skyward {
         move.rotation.scale(1 / animationSteps);
   
         f.Time.game.setTimer(10, animationSteps, function (): void {
-            camera.move(move);
+          game.camera.move(move);
   
   
             //f.RenderManager.update();

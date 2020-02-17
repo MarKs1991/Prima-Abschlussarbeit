@@ -168,7 +168,7 @@ namespace Skyward {
         }
 
         private rotateSprite(direction: number): void{
-          let rotY: number = floor.cmpTransform.local.rotation.y;
+          let rotY: number = game.floor.cmpTransform.local.rotation.y;
           if (rotY == 90){
               this.cmpTransform.local.rotation = f.Vector3.Y(90 * direction);
             }
@@ -186,7 +186,7 @@ namespace Skyward {
         private checkCollision(): void {
 
             let i = 0;
-            for (let floor of level.getChildren()) {
+            for (let floor of game.level.getChildren()) {
 
 
                 let rotation: number = (< Floor > floor).cmpTransform.local.rotation.y;
@@ -224,7 +224,7 @@ namespace Skyward {
         private collectCoins(): void {
 
 
-            for (let coin of collectorAble.getChildren()) {
+            for (let coin of  game.collectorAble.getChildren()) {
 
 
                 let rotation: number = (< Coin > coin).cmpTransform.local.rotation.y;
@@ -246,7 +246,7 @@ namespace Skyward {
 
                 let hit: boolean = rect.isInside(CharacterCollider);
                 if (hit) {
-                    collectorAble.removeChild((< Coin > coin));
+                    game.collectorAble.removeChild((< Coin > coin));
                     this.collectedCoins ++;
                     document.getElementById("CollectedCoins").innerHTML = this.collectedCoins.toString();
                     Sound.play("coin");
@@ -258,7 +258,7 @@ namespace Skyward {
         private hitPlayer(): void {
 
 
-          for (let planes of enemys.getChildren()) {
+          for (let planes of game.enemys.getChildren()) {
 
 
               let rotation: number = (< Planes > planes).cmpTransform.local.rotation.y;
@@ -280,7 +280,7 @@ namespace Skyward {
 
               let hit: boolean = rect.isInside(CharacterCollider);
               if (hit) {
-                  gomez.cmpTransform.local.translateX(1);
+                  game.gomez.cmpTransform.local.translateX(1);
               }
           }
       }
