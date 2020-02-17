@@ -6,7 +6,7 @@ Repository for the module "Prototyping interactive media-applications and games"
 - [Designdokument](https://github.com/MarKs1991/Prima-Abschlussarbeit/tree/master/Skyward/Documentation)
 - [QuellCode](https://github.com/MarKs1991/Prima-Abschlussarbeit/tree/master/Skyward/SourceCode)
 
-Ich hatte Probleme das zip Archive zu pushen eine altes Archiv ist noch in den alten commits aber auf dem Master ist aktuell keins. Hier  hab ist ein Link für eine Kopie auf meiner Drive https://drive.google.com/open?id=1qdD_q-2MuOoWYNEswDu3lUo7WP9lunqv
+
 ## Checkliste für Leistungsnachweis
 © Prof. Dipl.-Ing. Jirka R. Dell'Oro-Friedl, HFU
 
