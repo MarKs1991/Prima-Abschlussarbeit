@@ -5,7 +5,7 @@ Repository for the module "Prototyping interactive media-applications and games"
 - [SKYWARD](https://MarKs1991.github.io/Prima-Abschlussarbeit/Skyward/Build)
 - [Designdokument](https://github.com/MarKs1991/Prima-Abschlussarbeit/tree/master/Skyward/Documentation)
 - [QuellCode](https://github.com/MarKs1991/Prima-Abschlussarbeit/tree/master/Skyward/SourceCode)
-
+- [.zip Archiv](https://github.com/MarKs1991/Prima-Abschlussarbeit/blob/master/Skyward.zip)
 
 ## Checkliste für Leistungsnachweis
 © Prof. Dipl.-Ing. Jirka R. Dell'Oro-Friedl, HFU
